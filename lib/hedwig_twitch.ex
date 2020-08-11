@@ -98,7 +98,7 @@ defmodule Hedwig.Adapters.Twitch do
     Logger.info "#{user} left with message: #{inspect message}"
     {:noreply, state}
   end
-  
+
   def handle_info(:disconnected, state = {robot, _opts, _client}) do
     Robot.handle_disconnect(robot, nil)
     {:noreply, state}
@@ -107,6 +107,11 @@ defmodule Hedwig.Adapters.Twitch do
   def handle_info({:joined, server, _message}, state) do
     Logger.info "Joined #{server}"
     {:noreply, state}
+  end
+
+  def handle_info({:room_mods, channel, mods_msg}, state) do
+    mods_msg_broke = String.split(mods_msg, ":", trim: true)
+    #encode mods_stirng into json and put into mods file
   end
 
   def handle_info(msg, state) do

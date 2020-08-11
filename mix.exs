@@ -39,6 +39,7 @@ defmodule HedwigTwitch.Mixfile do
       {:hedwig, "~> 1.0.1"},
       {:exirc, "~> 2.0.0"},
       {:ex_doc, "~> 0.18", only: :dev},
+      {:poison, "~> 4.0"}
     ]
   end
 
